@@ -2,10 +2,10 @@
 <html lang="az">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nurməhəmmədin Ad Günü</title>
-  <!-- Font: Sevillana -->
+  <!-- Fontlar -->
   <link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
-  <!-- Body font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {
@@ -14,60 +14,70 @@
       box-sizing: border-box;
     }
 
+    html {
+      font-size: 16px;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #2c3e50, #34495e);
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 20px;
+      text-align: center;
+      overflow: hidden;
       color: #fff;
     }
 
     .container {
-      text-align: center;
-      padding: 40px;
+      max-width: 500px;
+      width: 100%;
     }
 
     .invite-box {
       display: none;
-      animation: fadeIn 1.5s ease forwards;
+      animation: fadeIn 1.2s ease forwards;
     }
 
     .button-flash {
       background: #1e90ff;
       border: none;
-      padding: 20px 40px;
+      padding: 18px 36px;
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       border-radius: 50px;
       cursor: pointer;
       font-weight: bold;
       animation: flash 1.5s infinite;
-      box-shadow: 0 0 25px rgba(30, 144, 255, 0.6);
+      width: 100%;
+      max-width: 350px;
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.6);
     }
 
     @keyframes flash {
       0%, 100% { background-color: #1e90ff; transform: scale(1); }
-      50% { background-color: #4682b4; transform: scale(1.1); }
+      50% { background-color: #4682b4; transform: scale(1.08); }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .invite-box h1 {
       font-family: 'Sevillana', cursive;
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       margin-bottom: 20px;
       color: #00bfff;
+      line-height: 1.3;
     }
 
     .invite-box p {
-      font-size: 1.2rem;
-      color: #dcdcdc;
+      font-size: 1.1rem;
+      color: #e0e0e0;
+      line-height: 1.6;
     }
 
     .balloons {
@@ -81,8 +91,8 @@
 
     .balloon {
       position: absolute;
-      width: 50px;
-      height: 70px;
+      width: 40px;
+      height: 60px;
       background-color: rgba(255, 255, 255, 0.15);
       border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
       animation: floatUp 10s linear infinite;
@@ -91,6 +101,20 @@
     @keyframes floatUp {
       0% { transform: translateY(100vh) rotate(0deg); }
       100% { transform: translateY(-100vh) rotate(360deg); }
+    }
+
+    @media (max-width: 480px) {
+      html {
+        font-size: 15px;
+      }
+
+      .invite-box h1 {
+        font-size: 1.8rem;
+      }
+
+      .invite-box p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -104,22 +128,19 @@
     </div>
   </div>
 
-  <div class="balloons">
-    <!-- JS ile balonlar üretilecek -->
-  </div>
+  <div class="balloons"></div>
 
   <script>
-    // Balonları rastgele üret
-    for (let i = 0; i < 30; i++) {
+    // Balonları üret
+    for (let i = 0; i < 25; i++) {
       const balloon = document.createElement('div');
       balloon.classList.add('balloon');
       balloon.style.left = Math.random() * 100 + 'vw';
-      balloon.style.animationDuration = (5 + Math.random() * 5) + 's';
-      balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 40%, 60%)`;
+      balloon.style.animationDuration = (6 + Math.random() * 5) + 's';
+      balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 50%, 60%)`;
       document.querySelector('.balloons').appendChild(balloon);
     }
 
-    // Butona basınca davet yazısını göster
     function showInvite() {
       document.querySelector('.button-flash').style.display = 'none';
       document.getElementById('inviteBox').style.display = 'block';
