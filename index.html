@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <title>Nurməhəmmədin Ad Günü</title>
+  <!-- Font: Sevillana -->
+  <link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
+  <!-- Body font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      padding: 40px;
+    }
+
+    .invite-box {
+      display: none;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    .button-flash {
+      background: #1e90ff;
+      border: none;
+      padding: 20px 40px;
+      color: white;
+      font-size: 1.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      animation: flash 1.5s infinite;
+      box-shadow: 0 0 25px rgba(30, 144, 255, 0.6);
+    }
+
+    @keyframes flash {
+      0%, 100% { background-color: #1e90ff; transform: scale(1); }
+      50% { background-color: #4682b4; transform: scale(1.1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .invite-box h1 {
+      font-family: 'Sevillana', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #00bfff;
+    }
+
+    .invite-box p {
+      font-size: 1.2rem;
+      color: #dcdcdc;
+    }
+
+    .balloons {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .balloon {
+      position: absolute;
+      width: 50px;
+      height: 70px;
+      background-color: rgba(255, 255, 255, 0.15);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: floatUp 10s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) rotate(0deg); }
+      100% { transform: translateY(-100vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="button-flash" onclick="showInvite()">Hadi bu butona bas 🎉</button>
+
+    <div class="invite-box" id="inviteBox">
+      <h1>Nurməhəmmədin ad gününə dəvətlisiniz</h1>
+      <p>27.04.2025 tarixində saat 18:00 sizi Rübai Concept restaurant dəvət edirik</p>
+    </div>
+  </div>
+
+  <div class="balloons">
+    <!-- JS ile balonlar üretilecek -->
+  </div>
+
+  <script>
+    // Balonları rastgele üret
+    for (let i = 0; i < 30; i++) {
+      const balloon = document.createElement('div');
+      balloon.classList.add('balloon');
+      balloon.style.left = Math.random() * 100 + 'vw';
+      balloon.style.animationDuration = (5 + Math.random() * 5) + 's';
+      balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 40%, 60%)`;
+      document.querySelector('.balloons').appendChild(balloon);
+    }
+
+    // Butona basınca davet yazısını göster
+    function showInvite() {
+      document.querySelector('.button-flash').style.display = 'none';
+      document.getElementById('inviteBox').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
